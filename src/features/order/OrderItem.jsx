@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import { formatCurrency } from "../../utils/helpers";
+import PropTypes from 'prop-types';
+import { formatCurrency } from '../../utils/helpers';
 
-function OrderItem({ item }) {
+function OrderItem({ item, isLoadingIngredients, ingredients }) {
   const { quantity, name, totalPrice } = item;
 
   return (
@@ -12,6 +12,9 @@ function OrderItem({ item }) {
         </p>
         <p>{formatCurrency(totalPrice)}</p>
       </div>
+      <p className="text-sm capitalize italic text-stone-500">
+        {isLoadingIngredients ? 'loadding...' : ingredients.join(', ')}
+      </p>
     </li>
   );
 }
